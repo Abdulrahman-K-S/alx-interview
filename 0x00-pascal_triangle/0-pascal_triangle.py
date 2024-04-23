@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ 0-pascal_triangle.py
 
 This module is aimed to solve the pascal triangle problem.
