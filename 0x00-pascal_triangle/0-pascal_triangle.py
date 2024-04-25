@@ -4,6 +4,7 @@
 This module is aimed to solve the pascal triangle problem.
 """
 
+
 def binomial_coefficient(n, k):
     """Binomial Coefficient
 
