@@ -1,47 +1,38 @@
 #!/usr/bin/python3
-""" 0-pascal_triangle.py
-
-This module is aimed to solve the pascal triangle problem.
+"""
+Defines function that returns a list of lists of integers
+representing the Pascal's triangle of n
 """
 
 
-def binomial_coefficient(n, k):
-    """Binomial Coefficient
-
-    Arguements:
-        n (int): The row to be calculated.
-        k (int): The column to be calculated.
-
-    Return:
-        (int): The number yeilded by nCm
-    """
-    if k == 0 or k == n:
-        return 1
-    else:
-        return binomial_coefficient(n - 1, k - 1) + binomial_coefficient(n - 1, k)
-
 def pascal_triangle(n):
-    """Pascal Triangle
-
-    Arguments:
-        n (int): The height of the pascal triangle to be returned
-
-    Return:
-        (list): The flattened pascal triangle of height n
+    """
+    Creates a list of lists of integers representing Pascal's triangle
+    parameters:
+        n [int]:
+            the number of rows of Pascal's triangle to recreate
+    return:
+        [list of lists of ints]:
+            representation of Pascal's triangle
     """
     if type(n) is not int:
         raise TypeError("n must be an integer")
-    elif n <= 0:
-        return []
-
-    pTriangle = []
-    for row in range(n):
+    triangle = []
+    if n <= 0:
+        return triangle
+    previous = [1]
+    for row_index in range(n):
         rowlist = []
-        for col in range(row + 1):
-            if col == 0 or col == row:
-                rowlist.append(1)
-            else:
-                rowlist.append(binomial_coefficient(row, col))
-        pTriangle.append(rowlist)
-
-    return pTriangle
+        if row_index == 0:
+            rowlist = [1]
+        else:
+            for i in range(row_index + 1):
+                if i == 0:
+                    rowlist.append(0 + previous[i])
+                elif i == (row_index):
+                    rowlist.append(previous[i - 1] + 0)
+                else:
+                    rowlist.append(previous[i - 1] + previous[i])
+        previous = rowlist
+        triangle.append(rowlist)
+    return triangle
