@@ -15,8 +15,6 @@ def pascal_triangle(n):
         [list of lists of ints]:
             representation of Pascal's triangle
     """
-    if type(n) is not int:
-        raise TypeError("n must be an integer")
     triangle = []
     if n <= 0:
         return triangle
