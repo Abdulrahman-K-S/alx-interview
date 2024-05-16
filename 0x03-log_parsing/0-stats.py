@@ -33,27 +33,24 @@ try:
     for line in sys.stdin:
         args = line.split()
 
-        if len(args) < 7:
-            continue
-
-        status_code = args[-2]
-        file_size = args[-1]
+        try:
+            file_size = line[-1]
+            total_file_size += int(file_size)
+        except (IndexError, ValueError):
+            pass
 
         try:
-            status_code = int(status_code)
-            file_size = int(file_size)
-        except ValueError:
-            continue
+            status_code = args[-2]
+            if status_code in possible_status:
+                possible_status[status_code] += 1
+        except IndexError:
+            pass
 
-        if status_code in possible_status:
-            possible_status[status_code] += 1
-
-        total_file_size += file_size
         count += 1
-
         if count == 10:
             printStats(total_file_size, possible_status)
             count = 0
+    printStats(total_file_size, possible_status)
 except KeyboardInterrupt:
     raise
 finally:
