@@ -34,7 +34,7 @@ try:
         args = line.split()
 
         if len(args) > 2:
-            status_code = args[-2]
+            status_code = int(args[-2])
             file_size = int(args[-1])
 
             if status_code in possible_status:
@@ -47,6 +47,4 @@ try:
                 printStats(total_file_size, possible_status)
                 count = 0
 except KeyboardInterrupt:
-    pass
-finally:
     printStats(total_file_size, possible_status)
