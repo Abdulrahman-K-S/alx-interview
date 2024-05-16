@@ -33,9 +33,15 @@ try:
     for line in sys.stdin:
         args = line.split()
 
-        if len(args) > 2:
-            status_code = int(args[-2])
-            file_size = int(args[-1])
+        if len(args) < 7:
+            status_code = args[-2]
+            file_size = args[-1]
+
+            try:
+                status_code = int(status_code)
+                file_size = int(file_size)
+            except ValueError:
+                continue
 
             if status_code in possible_status:
                 possible_status[status_code] += 1
