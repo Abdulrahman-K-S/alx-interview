@@ -56,3 +56,6 @@ try:
             count = 0
 except KeyboardInterrupt:
     printStats(total_file_size, possible_status)
+    raise
+finally:
+    printStats(total_file_size, possible_status)
