@@ -24,30 +24,29 @@ def printStats(file_size, status):
             print("{}: {}".format(key, value))
 
 
-if __name__ == "__main__":
-    total_file_size = 0
-    count = 0
-    possible_status = {200: 0, 301: 0, 400: 0, 401: 0,
-                       403: 0, 404: 0, 405: 0, 500: 0}
+total_file_size = 0
+count = 0
+possible_status = {200: 0, 301: 0, 400: 0, 401: 0,
+                   403: 0, 404: 0, 405: 0, 500: 0}
 
-    try:
-        for line in sys.stdin:
-            args = line.split()
+try:
+    for line in sys.stdin:
+        args = line.split()
 
-            if len(args) > 2:
-                status_code = int(args[-2])
-                file_size = int(args[-1])
+        if len(args) > 2:
+            status_code = int(args[-2])
+            file_size = int(args[-1])
 
-                if status_code in possible_status:
-                    possible_status[status_code] += 1
+            if status_code in possible_status:
+                possible_status[status_code] += 1
 
-                total_file_size += file_size
-                count += 1
+            total_file_size += file_size
+            count += 1
 
-                if count == 10:
-                    printStats(total_file_size, possible_status)
-                    count = 0
-    except KeyboardInterrupt:
-        pass
-    finally:
-        printStats(total_file_size, possible_status)
+            if count == 10:
+                printStats(total_file_size, possible_status)
+                count = 0
+except KeyboardInterrupt:
+    pass
+finally:
+    printStats(total_file_size, possible_status)
