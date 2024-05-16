@@ -19,44 +19,39 @@ def printStats(file_size, status):
         status (dict{int, int}): A dictionary of the statues that were called.
     """
     print("File size: {}".format(file_size))
-    sorted_keys = sorted(status.keys())
-    for key in sorted_keys:
-        print(f"{key}: {status[key]}")
+    for key, value in sorted(status.items()):
+        if value != 0:
+            print("{}: {}".format(key, value))
 
 
-if __name__ == "__main__":
-    import sys
-    import re
+total_file_size = 0
+count = 0
+possible_status = {200: 0, 301: 0, 400: 0, 401: 0,
+                   403: 0, 404: 0, 405: 0, 500: 0}
 
-    status_count = {}
-    total_file_size = 0
-    count = 0
+try:
+    for line in sys.stdin:
+        args = line.split()
 
-    try:
-        for line in sys.stdin:
-            if count == 10:
-                printStats(status_count, total_file_size)
-                count = 1
-            else:
-                count += 1
-            line = line.split()
-            try:
-                file_size = line[-1]
-                total_file_size += int(file_size)
-            except (IndexError, ValueError):
-                pass
-            try:
-                status = line[-2]
-                if status in ["200", "301", "400", "401", "403",
-                              "404", "405", "500"]:
-                    if status in status_count.keys():
-                        status_count[status] += 1
-                    else:
-                        status_count[status] = 1
-            except IndexError:
-                pass
+        try:
+            file_size = line[-1]
+            total_file_size += int(file_size)
+        except (IndexError, ValueError):
+            pass
 
-        printStats(status_count, total_file_size)
-    except KeyboardInterrupt:
-        printStats(status_count, total_file_size)
-        raise
+        try:
+            status_code = args[-2]
+            if status_code in possible_status:
+                possible_status[status_code] += 1
+        except IndexError:
+            pass
+
+        count += 1
+        if count == 10:
+            printStats(total_file_size, possible_status)
+            count = 0
+    printStats(total_file_size, possible_status)
+except KeyboardInterrupt:
+    raise
+finally:
+    printStats(total_file_size, possible_status)
