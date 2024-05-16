@@ -34,23 +34,25 @@ try:
         args = line.split()
 
         if len(args) < 7:
-            status_code = args[-2]
-            file_size = args[-1]
+            continue
 
-            try:
-                status_code = int(status_code)
-                file_size = int(file_size)
-            except ValueError:
-                continue
+        status_code = args[-2]
+        file_size = args[-1]
 
-            if status_code in possible_status:
-                possible_status[status_code] += 1
+        try:
+            status_code = int(status_code)
+            file_size = int(file_size)
+        except ValueError:
+            continue
 
-            total_file_size += file_size
-            count += 1
+        if status_code in possible_status:
+            possible_status[status_code] += 1
 
-            if count == 10:
-                printStats(total_file_size, possible_status)
-                count = 0
+        total_file_size += file_size
+        count += 1
+
+        if count == 10:
+            printStats(total_file_size, possible_status)
+            count = 0
 except KeyboardInterrupt:
     printStats(total_file_size, possible_status)
