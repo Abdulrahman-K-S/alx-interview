@@ -5,10 +5,8 @@ Task 0. Rotate 2D Matrix
 Rotate an n by n matrix
 """
 
-from typing import List
 
-
-def rotate_2d_matrix(matrix: List):
+def rotate_2d_matrix(matrix):
     """rotate_2d_matrix
 
     Takes an n by n matrix and rotates the matrix by
