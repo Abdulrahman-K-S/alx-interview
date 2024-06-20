@@ -17,7 +17,7 @@ def makeChange(coins, total):
         total (int): The total needed.
 
     Return:
-        (int): The minimum number of coins needed to meet the total. 
+        (int): The minimum number of coins needed to meet the total.
     """
     temp_value = 0
     coins.sort(reverse=True)
