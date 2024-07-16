@@ -1,6 +1,8 @@
 # <p align='center'>ALX Interview</p>
 
-![ALX SE Banner](<Imgs/ALX SE Banner.png>)
+<p align='center' width='100%'>
+    <img width='90%' src='./Imgs/ALX SE Banner.png'>
+</p>
 
 ## Table of Contents
 - [Introduction](#introduction)
