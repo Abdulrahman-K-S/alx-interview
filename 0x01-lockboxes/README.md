@@ -2,10 +2,10 @@
 
 ## Table of Contents
 - [Concepts Needed](#concepts-needed)
-- [Additional Resource](#additional-resource)
+- [Additional Resource](#additional-resources)
 - [Requirements](#requirements)
-- [Task](#task)
-    - [0. Island Perimeter](#0-island-perimeter)
+- [Task](#tasks)
+    - [0. Lockboxes](#0-lockboxes)
 
 # Must Know
 For this project, you will need a solid understanding of several key concepts in order to develop a solution that can efficiently determine if all boxes can be opened. Here’s a list of concepts and resources that will be instrumental in tackling this project:
