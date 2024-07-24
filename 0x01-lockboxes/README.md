@@ -2,7 +2,6 @@
 
 ## Table of Contents
 - [Concepts Needed](#concepts-needed)
-- [Resources](#resources)
 - [Additional Resource](#additional-resource)
 - [Requirements](#requirements)
 - [Task](#task)
